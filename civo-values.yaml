@@ -20,7 +20,7 @@ image:
 # on same instance.
 # Frappe supports multi-tenant architecture, so we can have multiple sites in same instance
 sitesConfig:
-  - siteName: erp.cluster.local
+  - siteName: dev-erp.penpencil.co
     enabled: true
     dbName: erpnext # db name for site should be unique as it will be created in same cluster
     forceCreate: false # do not force create if site aleady exist , it will override and create new site
@@ -270,8 +270,7 @@ persistence:
       - ReadWriteOnce
     # existingClaim: ""
     size: 8Gi
-    # storageClass: "efs-sc-v2"
-    storageClass: "standard"
+    storageClass: "civo-volume"
 
 # Ingress
 ingress:
@@ -489,4 +488,3 @@ mariadb:
       --skip-innodb-read-only-compressed
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_unicode_ci
-
