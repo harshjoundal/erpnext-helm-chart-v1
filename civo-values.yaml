@@ -274,7 +274,7 @@ persistence:
   worker:
     enabled: true
     accessModes:
-      - ReadWriteMany
+      - ReadWriteOnce
     # existingClaim: ""
     size: 8Gi
     storageClass: "civo-volume"
