@@ -458,31 +458,31 @@ securityContext:
 # ----------------------  REDIS  ----------------------
 # If we are using external redis , disable this and provide the host so it will not create standalone redis
 redis-cache:
-  host: "redis://43.204.32.174:6379"
-  enabled: false
-  # architecture: standalone
-  # auth:
-  #   enabled: false
-  #   sentinal: false
-  # master:
-  #   containerPorts:
-  #     redis: 6379
-  #   persistence:
-  #     enabled: false
+  # host: "redis://43.204.32.174:6379"
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+    sentinal: false
+  master:
+    containerPorts:
+      redis: 6379
+    persistence:
+      enabled: false
 
 redis-queue:
-  host: "redis://43.204.32.174:6379"
+  # host: "redis://43.204.32.174:6379"
   # https://github.com/bitnami/charts/tree/master/bitnami/redis
-  enabled: false
-  # architecture: standalone
-  # auth:
-  #   enabled: false
-  #   sentinal: false
-  # master:
-  #   containerPorts:
-  #     redis: 6379
-  #   persistence:
-  #     enabled: false
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+    sentinal: false
+  master:
+    containerPorts:
+      redis: 6379
+    persistence:
+      enabled: false
 
 # --------------------- DB ----------------------
 # If we are using external db , disable this so it will not create standalone db
