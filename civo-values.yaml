@@ -13,7 +13,7 @@
 
 image:
   repository:  harshjoundal7/helpdesk
-  tag: v1
+  tag: amd
   pullPolicy: IfNotPresent
 
 # Any new site added in sitesConfig will be created while new-site jobs runs automatically
