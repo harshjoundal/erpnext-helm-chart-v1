@@ -85,16 +85,16 @@ spec:
           - name: DB_PORT
             value: {{ .Values.mariadb.primary.service.ports.mysql | quote }}
           - name: REDIS_CACHE
-            {{- if index .Values "redis-cache" "host" }}
-            value: {{ index .Values "redis-cache" "host" }}
-            {{- else if index .Values "redis-cache" "enabled" }}
+            {{- if index .Values "redis-cache" "enabled" }}
             value: redis://{{ .Release.Name }}-redis-cache-master:{{ index .Values "redis-cache" "master" "containerPorts" "redis" }}
+            {{- else }}
+            value: {{ index .Values "redis-cache" "host" }}
             {{- end }}
           - name: REDIS_QUEUE
-            {{- if index .Values "redis-queue" "host" }}
-            value: {{ index .Values "redis-queue" "host" }}
-            {{- else if index .Values "redis-queue" "enabled" }}
+            {{- if index .Values "redis-queue" "enabled" }}
             value: redis://{{ .Release.Name }}-redis-queue-master:{{ index .Values "redis-queue" "master" "containerPorts" "redis" }}
+            {{- else }}
+            value: {{ index .Values "redis-queue" "host" }}
             {{- end }}
           {{- if .Values.jobs.configure.envVars }}
             {{- toYaml .Values.jobs.configure.envVars | nindent 12 }}
