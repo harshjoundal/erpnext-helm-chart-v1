@@ -403,7 +403,7 @@ jobs:
     tolerations: []
 
   uninstallApps:
-    enabled: true
+    enabled: false
     jobName: ""
     backoffLimit: 0
     forced: false
