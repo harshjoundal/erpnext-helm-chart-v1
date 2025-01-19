@@ -20,7 +20,7 @@ image:
 # on same instance.
 # Frappe supports multi-tenant architecture, so we can have multiple sites in same instance
 sitesConfig:
-  - siteName: dev-erp.penpencil.co
+  - siteName: erp.cluster.local
     enabled: true
     dbName: erpnext # db name for site should be unique as it will be created in same cluster
     forceCreate: false # do not force create if site aleady exist , it will override and create new site
