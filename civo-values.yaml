@@ -458,7 +458,7 @@ securityContext:
 # ----------------------  REDIS  ----------------------
 # If we are using external redis , disable this and provide the host so it will not create standalone redis
 redis-cache:
-  # host: "redis://43.204.32.174:6379"
+  # host: "redis://13.235.114.71:6379"
   enabled: true # If we are using external redis , disable this so it will not create standalone redis
   architecture: standalone
   auth:
@@ -471,7 +471,7 @@ redis-cache:
       enabled: false
 
 redis-queue:
-  # host: "redis://43.204.32.174:6379"
+  # host: "redis://13.235.114.71:6379"
   # https://github.com/bitnami/charts/tree/master/bitnami/redis
   enabled: true # If we are using external redis , disable this so it will not create standalone redis
   architecture: standalone
