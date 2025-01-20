@@ -45,9 +45,7 @@ spec:
                   {{- range .uninstallApps }}
                     bench --site {{ $siteName }} uninstall-app --no-backup {{ . }} {{if $.Values.jobs.uninstallApps.forced }}--force{{end}} -y;
                   {{- end}}
-                  # bench --site {{ $siteName }} set-maintenance-mode on;
-                  # bench --site {{ $siteName }} migrate {{ if $skipFailing }}--skip-failing{{ end }};
-                  # bench --site {{ $siteName }} set-maintenance-mode off;
+                  bench --site {{ $siteName }} clear-cache;
                 {{- end}}
               {{- end}}
           env: []
