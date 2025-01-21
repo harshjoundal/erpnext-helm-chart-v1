@@ -29,7 +29,9 @@ sitesConfig:
     # while site migration 
     installApps:
       - erpnext
+      - special-ops-frappe-utilities
       - helpdesk
+      - pw_help_desk
     uninstallApps: #These apps will be uninstalled when uninstallApps job runs
       - helpdesk
     backup: # If enabled site will be backed up while backup job runs
