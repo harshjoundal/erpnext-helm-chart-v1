@@ -399,10 +399,10 @@ jobs:
       # "helm.sh/hook-delete-policy": "before-hook-creation"
     resources: 
       requests:
-        cpu: 1000m
+        cpu: 2000m
         memory: 2Gi
       limits:
-        cpu: 1000m
+        cpu: 2000m
         memory: 2.5Gi
     nodeSelector:
       app: erpnext
