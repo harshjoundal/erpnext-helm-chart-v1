@@ -11,8 +11,8 @@
 # dbRootPassword: "498KUoT9uty2P7a9MgSD"
 # dbRds: true
 
-nameOverride: "erpnext"
-fullnameOverride: "frappe-bench-erpnext"
+nameOverride: "erpnext" # this will pe used as label eg.app.kubernetes.io/name: {{ include "erpnext.name" . }}-worker-l
+fullnameOverride: "frappe-bench-erpnext"  # this will be used as a prefix for the resource name 
 
 image:
   repository:  harshjoundal7/helpdesk
