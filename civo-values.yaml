@@ -11,7 +11,7 @@
 # dbRootPassword: "498KUoT9uty2P7a9MgSD"
 # dbRds: true
 
-nameOverride: "erpnext"
+nameOverride: "frappe-erpnext"
 fullnameOverride: "erpnext-frappe-erpnext"
 
 image:
