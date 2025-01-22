@@ -11,6 +11,9 @@
 # dbRootPassword: "498KUoT9uty2P7a9MgSD"
 # dbRds: true
 
+nameOverride: "erpnext"
+fullnameOverride: "erpnext-frappe-erpnext"
+
 image:
   repository:  harshjoundal7/helpdesk
   tag: amd
@@ -443,8 +446,7 @@ jobs:
     affinity: {}
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+
 
 # ----------------------  Service Account  ----------------------
 # This servie
