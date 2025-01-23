@@ -53,7 +53,7 @@ spec:
                 echo "Site {{ $siteName }} does not exist. Skipping."
               fi
             {{- end }}
-            echo "sleep"
+            echo "sleep";
             sleep 5;
             echo "sleep complete"
             {{- if index .Values "jobs" "migrate" "postMigrateCommands" }}
