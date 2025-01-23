@@ -53,9 +53,9 @@ spec:
                 echo "Site {{ $siteName }} does not exist. Skipping."
               fi
             
-            {{- if .Values.jobs.migrate.postMigrateCommands }}
+            {{- if $.Values.jobs.migrate.postMigrateCommands }}
               echo "Running post-migration commands";
-              {{- range .Values.jobs.migrate.postMigrateCommands }}
+              {{- range $.Values.jobs.migrate.postMigrateCommands }}
                 {{ . }}
               {{- end }}
             {{- end }}
