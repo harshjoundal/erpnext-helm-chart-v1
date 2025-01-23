@@ -57,7 +57,7 @@ spec:
             {{- if index .Values "jobs" "migrate" "postMigrateCommands" }}
               echo "Running post-migration commands";
               {{- range .Values.jobs.migrate.postMigrateCommands }}
-                {{ . }}
+                {{ . }};
               {{- end }}
             {{- end }}
         env: []

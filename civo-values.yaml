@@ -395,6 +395,7 @@ jobs:
     enabled: true
     skipFailing: false
     postMigrateCommands:
+      - echo "---Running post-migration commands---"
       - bench build
     backoffLimit: 0
     annotations:
