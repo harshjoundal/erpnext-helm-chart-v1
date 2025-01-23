@@ -376,6 +376,7 @@ jobs:
   migrate:
     enabled: true
     skipFailing: false
+    postMigrateCommands: []
     backoffLimit: 0
     annotations:
       "argocd.argoproj.io/hook": "Sync"

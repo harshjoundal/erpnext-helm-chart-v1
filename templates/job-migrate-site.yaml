@@ -52,6 +52,13 @@ spec:
               else
                 echo "Site {{ $siteName }} does not exist. Skipping."
               fi
+
+            {{- if .Values.jobs.migration.postMigrateCommands }}
+              {{- range .Values.jobs.migration.postMigrateCommands }}
+                {{ . }}
+              {{- end }}
+            {{- end }}
+
             {{- end }}
         env: []
         resources:
