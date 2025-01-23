@@ -23,7 +23,7 @@ image:
 # on same instance.
 # Frappe supports multi-tenant architecture, so we can have multiple sites in same instance
 sitesConfig:
-  - siteName: erp.cluster.local
+  - siteName: erp.harshjoundal.in
     enabled: true
     dbName: erpnext # db name for site should be unique as it will be created in same cluster
     forceCreate: false # do not force create if site aleady exist , it will override and create new site
@@ -289,13 +289,14 @@ persistence:
 ingress:
   # ingressName: ""
   # className: ""
-  enabled: false
-  annotations: {}
+  enabled: true
+  annotations: 
+    traefik.ingress.kubernetes.io/router.entrypoints: web
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
     # cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-  - host: erp.cluster.local
+  - host: erp.harshjoundal.in
     paths:
     - path: /
       pathType: ImplementationSpecific
