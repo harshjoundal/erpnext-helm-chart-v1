@@ -16,7 +16,7 @@ fullnameOverride: "gurukulam"  # this will be used as a prefix for the resource 
 
 image:
   repository:  harshjoundal7/gurukulam
-  tag: amd
+  tag: amdv2
   pullPolicy: IfNotPresent
 
 # Any new site added in sitesConfig will be created while new-site jobs runs automatically
