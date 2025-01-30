@@ -37,6 +37,20 @@ sitesConfig:
     uninstallApps: [] #These apps will be uninstalled when uninstallApps job runs
     backup: # If enabled site will be backed up while backup job runs
       enabled: false
+  - siteName: pw-ioi.harshjoundal.in
+    enabled: true
+    dbName: pw-ioi # db name for site should be unique as it will be created in same cluster
+    forceCreate: false # do not force create if site aleady exist , it will override and create new site
+    #These apps will be installed while site creation 
+    #also if we add new apps in future,it will install those apps
+    # while site migration 
+    installApps:
+      - erpnext
+      - education
+      - pw_ioi
+    uninstallApps: [] #These apps will be uninstalled when uninstallApps job runs
+    backup: # If enabled site will be backed up while backup job runs
+      enabled: false
 
 commonEnvVars: &commonEnvVars
   - name: PP_BACKEND_BASE_URL
@@ -285,6 +299,10 @@ ingress:
     # cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
   - host: gurukulam.harshjoundal.in
+    paths:
+    - path: /
+      pathType: ImplementationSpecific
+  - host: pw-ioi.harshjoundal.in
     paths:
     - path: /
       pathType: ImplementationSpecific
