@@ -100,8 +100,7 @@ nginx:
     type: ClusterIP
     port: 8080
   resources: {}
-  nodeSelector:
-    app: erpnext
+  nodeSelector: {}
   tolerations: []
   affinity: {}
   envVars: []
@@ -131,8 +130,7 @@ worker:
       type: ClusterIP
       port: 8000
     resources: {}
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
     args: []
@@ -149,8 +147,7 @@ worker:
       targetCPU: 75
       targetMemory: 75
     resources: {}
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
     livenessProbe:
@@ -172,8 +169,7 @@ worker:
       targetCPU: 75
       targetMemory: 75
     resources: {}
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
     livenessProbe:
@@ -195,8 +191,7 @@ worker:
       targetCPU: 75
       targetMemory: 75
     resources: {}
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
     livenessProbe:
@@ -212,8 +207,7 @@ worker:
   scheduler:
     replicaCount: 1
     resources: {}
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
     livenessProbe:
@@ -273,8 +267,7 @@ socketio:
     initialDelaySeconds: 5
     periodSeconds: 10
   resources: {}
-  nodeSelector:
-    app: erpnext
+  nodeSelector: {}
   tolerations: []
   affinity: {}
   service:
@@ -320,8 +313,7 @@ jobs:
     backoffLimit: 0
     resources: {}
     annotations: {}
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
 
@@ -338,8 +330,7 @@ jobs:
       # "helm.sh/hook": "post-install,post-upgrade"
       # "helm.sh/hook-weight": "1"
       # "helm.sh/hook-delete-policy": "before-hook-creation"
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
     envVars: []
@@ -362,8 +353,7 @@ jobs:
       # "helm.sh/hook": "post-install,post-upgrade"
       # "helm.sh/hook-weight": "1"
       # "helm.sh/hook-delete-policy": "before-hook-creation"
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
 
@@ -379,8 +369,7 @@ jobs:
       # "helm.sh/hook": "post-install,post-upgrade"
       # "helm.sh/hook-weight": "3"
       # "helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
 
@@ -395,8 +384,7 @@ jobs:
       # "helm.sh/hook": "post-install,post-upgrade"
       # "helm.sh/hook-weight": "3"
       # "helm.sh/hook-delete-policy": "before-hook-creation"
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
 
@@ -420,8 +408,7 @@ jobs:
       limits:
         cpu: 2000m
         memory: 2.5Gi
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
 
@@ -435,8 +422,7 @@ jobs:
     restartPolicy: Never
     annotations: {}
     volumes: []
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     affinity: {}
     tolerations: []
 
@@ -453,8 +439,7 @@ jobs:
       # "helm.sh/hook": "post-install,post-upgrade"
       # "helm.sh/hook-weight": "4"
       # "helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"
-    nodeSelector:
-      app: erpnext
+    nodeSelector: {}
     tolerations: []
     affinity: {}
 
