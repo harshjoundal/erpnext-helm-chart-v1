@@ -285,7 +285,7 @@ persistence:
       - ReadWriteMany
     # existingClaim: ""
     size: 8Gi
-    storageClass: "efs-sc"
+    storageClass: "longhorn-sc"
 
 # Ingress
 ingress:
