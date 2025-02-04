@@ -14,13 +14,13 @@ secretproviderclass:
 
 # Configure external database host
 # If we provide an external dbHost , it will not create standalone db
-# dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
-# dbPort: 3306
-# dbRootUser: "admin"
+dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
+dbPort: 3306
+dbRootUser: "admin"
 
 # If we provide dbRootPassword ,it will create a secret for dbRootPassword
-# dbRootPassword: "498KUoT9uty2P7a9MgSD"
-# dbRds: true
+dbRootPassword: "498KUoT9uty2P7a9MgSD"
+dbRds: true
 
 nameOverride: "erpnext" # this will pe used as label eg.app.kubernetes.io/name: {{ include "erpnext.name" . }}-worker-l
 fullnameOverride: "frappe-bench-erpnext"  # this will be used as a prefix for the resource name 
@@ -36,7 +36,7 @@ image:
 sitesConfig:
   - siteName: erp.harshjoundal.in
     enabled: true
-    dbName: erpnext # db name for site should be unique as it will be created in same cluster
+    dbName: harsh-erpnext-aws # db name for site should be unique as it will be created in same cluster
     forceCreate: false # do not force create if site aleady exist , it will override and create new site
     #These apps will be installed while site creation 
     #also if we add new apps in future,it will install those apps
@@ -497,7 +497,7 @@ redis-queue:
 # If we are using external db , disable this so it will not create standalone db
 mariadb:
   # https://github.com/bitnami/charts/tree/master/bitnami/mariadb
-  enabled: true
+  enabled: false
   auth:
     rootPassword: "changeit"
     username: "erpnext"
