@@ -3,24 +3,24 @@
 
 # Configure external database host
 # If we provide an external dbHost , it will not create standalone db
-dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
-dbPort: 3306
-dbRootUser: "admin"
+# dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
+# dbPort: 3306
+# dbRootUser: "admin"
 
 # If we provide dbRootPassword ,it will create a secret for dbRootPassword
 # dbRootPassword: "498KUoT9uty2P7a9MgSD"
 # dbRds: true
 
 nameOverride: "erpnext" # this will pe used as label eg.app.kubernetes.io/name: {{ include "erpnext.name" . }}-worker-l
-fullnameOverride: "frappe-bench-erpnext"  # this will be used as a prefix for the resource name 
+fullnameOverride: "erpnext"  # this will be used as a prefix for the resource name 
 
 image:
-  repository:  harshjoundal7/helpdesk
+  repository:  harshjoundal7/frappehrms:amd
   tag: amd
   pullPolicy: IfNotPresent
 
 secretproviderclass:
-  enabled: true
+  enabled: false
   SecretProviderName: "erpnext-aws-secrets"
   SecretProvider: "aws"
   secretName: "db-credentials"
@@ -36,30 +36,20 @@ secretproviderclass:
 sitesConfig:
   - siteName: erp.harshjoundal.in
     enabled: true
-    dbName: erpnext # db name for site should be unique as it will be created in same cluster
+    dbName: erpnext-test-local # db name for site should be unique as it will be created in same cluster
     forceCreate: false # do not force create if site aleady exist , it will override and create new site
     #These apps will be installed while site creation 
     #also if we add new apps in future,it will install those apps
     # while site migration 
     installApps:
       - erpnext
-      - special-ops-frappe-utilities
-      - helpdesk
-      - pw_help_desk
+      - crm
+      - hrms
+      - raven
     uninstallApps: #These apps will be uninstalled when uninstallApps job runs
       - helpdesk
     backup: # If enabled site will be backed up while backup job runs
       enabled: false
-  # - siteName: erp.cluster.local2
-  #   enabled: false
-  #   dbName: erpnext-test-local-2
-  #   forceCreate: false # do not force create if site aleady exist , it will override and create new site
-  #   installApps: #These apps will be installed while migration
-  #     - helpdesk
-  #   uninstallApps:
-  #     - helpdesk
-  #   backup:
-  #     enabled: false
 
 commonEnvVars: &commonEnvVars
   - name: PP_BACKEND_BASE_URL
@@ -112,7 +102,7 @@ nginx:
 
 worker:
   gunicorn:
-    replicaCount: 2
+    replicaCount: 3
     autoscaling:
       enabled: false
       minReplicas: 1
@@ -468,8 +458,8 @@ imagePullSecrets: []
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
-  annotations:
-    eks.amazonaws.com/role-arn: 'arn:aws:iam::539436019547:role/iac-dev-erpnext-service-role'
+  annotations: {}
+    # eks.amazonaws.com/role-arn: 'arn:aws:iam::539436019547:role/iac-dev-erpnext-service-role'
 
 podSecurityContext:
   supplementalGroups: [1000]
@@ -515,7 +505,7 @@ redis-queue:
 # If we are using external db , disable this so it will not create standalone db
 mariadb:
   # https://github.com/bitnami/charts/tree/master/bitnami/mariadb
-  enabled: false
+  enabled: true
   auth:
     rootPassword: "changeit"
     username: "erpnext"
