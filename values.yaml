@@ -17,14 +17,14 @@ image:
   pullPolicy: IfNotPresent
 
 secretproviderclass:
-  enabled: false
+  enabled: true
   SecretProviderName: "erpnext-aws-secrets"
   SecretProvider: "aws"
-  secretName: "erpnext-db-credentials"
+  secretName: "db-credentials"
   secrets:
-    - objectName: "erpnext/database"  # This is your secret name in AWS Secrets Manager
+    - objectName: "dev/erpnext/database"
       keys:
-        - path: "root_password"
+        - path: "dbRootPassword"
           value: "db-root-password"
 
 # Any new site added in sitesConfig will be created while new-site jobs runs automatically

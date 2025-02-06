@@ -3,9 +3,9 @@
 
 # Configure external database host
 # If we provide an external dbHost , it will not create standalone db
-# dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
-# dbPort: 3306
-# dbRootUser: "admin"
+dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
+dbPort: 3306
+dbRootUser: "admin"
 
 # If we provide dbRootPassword ,it will create a secret for dbRootPassword
 # dbRootPassword: "498KUoT9uty2P7a9MgSD"
@@ -18,6 +18,17 @@ image:
   repository:  harshjoundal7/helpdesk
   tag: amd
   pullPolicy: IfNotPresent
+
+secretproviderclass:
+  enabled: true
+  SecretProviderName: "erpnext-aws-secrets"
+  SecretProvider: "aws"
+  secretName: "db-credentials"
+  secrets:
+    - objectName: "dev/erpnext/database"
+      keys:
+        - path: "dbRootPassword"
+          value: "db-root-password"
 
 # Any new site added in sitesConfig will be created while new-site jobs runs automatically
 # on same instance.
@@ -457,7 +468,8 @@ imagePullSecrets: []
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
-  annotations: {}
+  annotations:
+    eks.amazonaws.com/role-arn: 'arn:aws:iam::539436019547:role/iac-dev-erpnext-service-role'
 
 podSecurityContext:
   supplementalGroups: [1000]
@@ -503,7 +515,7 @@ redis-queue:
 # If we are using external db , disable this so it will not create standalone db
 mariadb:
   # https://github.com/bitnami/charts/tree/master/bitnami/mariadb
-  enabled: true
+  enabled: false
   auth:
     rootPassword: "changeit"
     username: "erpnext"

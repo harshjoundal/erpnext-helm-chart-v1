@@ -2,11 +2,11 @@ secretproviderclass:
   enabled: true
   SecretProviderName: "erpnext-aws-secrets"
   SecretProvider: "aws"
-  secretName: "erpnext-db-credentials"
+  secretName: "db-credentials"
   secrets:
     - objectName: "dev/erpnext/database"  # This is your secret name in AWS Secrets Manager
       keys:
-        - path: "root_password"
+        - path: "dbRootPassword"
           value: "db-root-password"
 
 # Default values

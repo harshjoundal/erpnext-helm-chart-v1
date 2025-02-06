@@ -52,7 +52,12 @@ spec:
             value: "{{ .Values.dbRootUser }}"
             {{- end }}
           - name: "DB_ROOT_PASSWORD"
-            {{- if .Values.mariadb.enabled }}
+            {{- if .Values.secretproviderclass.enabled }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.secretproviderclass.secretName }}
+                key: db-root-password
+            {{- else if .Values.mariadb.enabled }}
             valueFrom:
               secretKeyRef:
                 key: mariadb-root-password
@@ -70,8 +75,21 @@ spec:
         volumeMounts:
           - name: sites-dir
             mountPath: /home/frappe/frappe-bench/sites
+          {{- if .Values.secretproviderclass.enabled }}
+          - name: secrets-store-inline
+            mountPath: "/mnt/secrets-store"
+            readOnly: true
+          {{- end }}
       restartPolicy: Never
       volumes:
+        {{- if .Values.secretproviderclass.enabled }}
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: {{ .Values.secretproviderclass.SecretProviderName }}
+        {{- end }}
         - name: sites-dir
           {{- if .Values.persistence.worker.enabled }}
           persistentVolumeClaim:
