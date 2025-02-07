@@ -37,7 +37,7 @@ sitesConfig:
   - siteName: erp.harshjoundal.in
     enabled: true
     dbName: erpnext-test-local # db name for site should be unique as it will be created in same cluster
-    forceCreate: false # do not force create if site aleady exist , it will override and create new site
+    forceCreate: true # do not force create if site aleady exist , it will override and create new site
     #These apps will be installed while site creation 
     #also if we add new apps in future,it will install those apps
     # while site migration 
