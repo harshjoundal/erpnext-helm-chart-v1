@@ -21,9 +21,9 @@ sitesConfig:
     # while site migration 
     installApps:
       - erpnext
-      # - crm
-      # - hrms
-      # - raven
+      - crm
+      - hrms
+      - raven
     uninstallApps: [] #These apps will be uninstalled when uninstallApps job runs
     backup: # If enabled site will be backed up while backup job runs
       enabled: false
