@@ -15,7 +15,7 @@ nameOverride: "erpnext" # this will pe used as label eg.app.kubernetes.io/name: 
 fullnameOverride: "erpnext"  # this will be used as a prefix for the resource name 
 
 image:
-  repository:  harshjoundal7/frappehrms:amd
+  repository:  harshjoundal7/frappehrms
   tag: amd
   pullPolicy: IfNotPresent
 
