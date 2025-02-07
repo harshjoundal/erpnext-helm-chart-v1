@@ -13,7 +13,7 @@ image:
 # Frappe supports multi-tenant architecture, so we can have multiple sites in same instance
 sitesConfig:
   - siteName: hrms.harshjoundal.in
-    enabled: true
+    enabled: false
     dbName: hrms # db name for site should be unique as it will be created in same cluster
     forceCreate: true # do not force create if site aleady exist , it will override and create new site
     #These apps will be installed while site creation 
