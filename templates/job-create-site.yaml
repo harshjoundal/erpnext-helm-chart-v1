@@ -134,17 +134,7 @@ spec:
             value: "root"
             {{- end }}
           - name: "DB_ROOT_PASSWORD"
-            {{- if .Values.dbRootPassword }}
-            valueFrom:
-              secretKeyRef:
-                key: db-root-password
-                name: {{ .Release.Name }}
-            {{- else if .Values.mariadb.enabled }}
-            valueFrom:
-              secretKeyRef:
-                key: mariadb-root-password
-                name: {{ .Release.Name }}-mariadb
-            {{- end }}
+            value: "changeit"
           - name: "ADMIN_PASSWORD"
             value: "{{ .Values.jobs.createSite.adminPassword }}"
         resources:

@@ -1,16 +1,5 @@
 # Default values
 
-
-# Configure external database host
-# If we provide an external dbHost , it will not create standalone db
-# dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
-# dbPort: 3306
-# dbRootUser: "admin"
-
-# # If we provide dbRootPassword ,it will create a secret for dbRootPassword
-# dbRootPassword: "498KUoT9uty2P7a9MgSD"
-# dbRds: true
-
 # nameOverride: "erpnext" # this will pe used as label eg.app.kubernetes.io/name: {{ include "erpnext.name" . }}-worker-l
 # fullnameOverride: "erpnext"  # this will be used as a prefix for the resource name 
 
@@ -19,22 +8,11 @@ image:
   tag: amd
   pullPolicy: IfNotPresent
 
-secretproviderclass:
-  enabled: false
-  SecretProviderName: "erpnext-aws-secrets"
-  SecretProvider: "aws"
-  secretName: "db-credentials"
-  secrets:
-    - objectName: "dev/erpnext/database"
-      keys:
-        - path: "dbRootPassword"
-          value: "db-root-password"
-
 # Any new site added in sitesConfig will be created while new-site jobs runs automatically
 # on same instance.
 # Frappe supports multi-tenant architecture, so we can have multiple sites in same instance
 sitesConfig:
-  - siteName: erp.harshjoundal.in
+  - siteName: hrms.harshjoundal.in
     enabled: true
     dbName: hrms # db name for site should be unique as it will be created in same cluster
     forceCreate: true # do not force create if site aleady exist , it will override and create new site
@@ -53,14 +31,6 @@ sitesConfig:
 commonEnvVars: &commonEnvVars
   - name: PP_BACKEND_BASE_URL
     value: "http://penpencil-backend-service.microservices.svc"
-  - name: BATCH_MICROSERVICE_BASE_URL
-    value: "http://batches-service.microservices.svc"
-  - name: USER_MICROSERVICE_BASE_URL
-    value: "http://user-microservice.microservices.svc"
-  - name: AWS_REGION
-    value: "ap-south-1"
-  - name: AWS_BUCKET
-    value: "special-ops-erpnext-dev"
 
 nginx:
   replicaCount: 2
@@ -458,7 +428,6 @@ serviceAccount:
   # Specifies whether a service account should be created
   create: true
   annotations: {}
-    # eks.amazonaws.com/role-arn: 'arn:aws:iam::539436019547:role/iac-dev-erpnext-service-role'
 
 podSecurityContext:
   supplementalGroups: [1000]
@@ -503,7 +472,6 @@ redis-queue:
 # --------------------- DB ----------------------
 # If we are using external db , disable this so it will not create standalone db
 mariadb:
-  # https://github.com/bitnami/charts/tree/master/bitnami/mariadb
   enabled: true
   auth:
     rootPassword: "changeit"
