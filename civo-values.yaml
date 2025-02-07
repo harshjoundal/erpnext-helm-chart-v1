@@ -266,7 +266,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
     # cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-  - host: erp.harshjoundal.in
+  - host: hrms.harshjoundal.in
     paths:
     - path: /
       pathType: ImplementationSpecific
