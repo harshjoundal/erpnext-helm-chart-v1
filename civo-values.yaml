@@ -36,7 +36,7 @@ secretproviderclass:
 sitesConfig:
   - siteName: erp.harshjoundal.in
     enabled: true
-    dbName: erpnext-test-local # db name for site should be unique as it will be created in same cluster
+    dbName: hrms # db name for site should be unique as it will be created in same cluster
     forceCreate: true # do not force create if site aleady exist , it will override and create new site
     #These apps will be installed while site creation 
     #also if we add new apps in future,it will install those apps
@@ -46,8 +46,7 @@ sitesConfig:
       - crm
       - hrms
       - raven
-    uninstallApps: #These apps will be uninstalled when uninstallApps job runs
-      - helpdesk
+    uninstallApps: [] #These apps will be uninstalled when uninstallApps job runs
     backup: # If enabled site will be backed up while backup job runs
       enabled: false
 
