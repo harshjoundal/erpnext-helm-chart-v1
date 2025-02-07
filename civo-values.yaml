@@ -3,16 +3,16 @@
 
 # Configure external database host
 # If we provide an external dbHost , it will not create standalone db
-dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
-dbPort: 3306
-dbRootUser: "admin"
+# dbHost: "erpnext-dev.cejra4hw3o2e.ap-south-1.rds.amazonaws.com"
+# dbPort: 3306
+# dbRootUser: "admin"
 
-# If we provide dbRootPassword ,it will create a secret for dbRootPassword
-dbRootPassword: "498KUoT9uty2P7a9MgSD"
-dbRds: true
+# # If we provide dbRootPassword ,it will create a secret for dbRootPassword
+# dbRootPassword: "498KUoT9uty2P7a9MgSD"
+# dbRds: true
 
-nameOverride: "erpnext" # this will pe used as label eg.app.kubernetes.io/name: {{ include "erpnext.name" . }}-worker-l
-fullnameOverride: "erpnext"  # this will be used as a prefix for the resource name 
+# nameOverride: "erpnext" # this will pe used as label eg.app.kubernetes.io/name: {{ include "erpnext.name" . }}-worker-l
+# fullnameOverride: "erpnext"  # this will be used as a prefix for the resource name 
 
 image:
   repository:  harshjoundal7/frappehrms
@@ -505,7 +505,7 @@ redis-queue:
 # If we are using external db , disable this so it will not create standalone db
 mariadb:
   # https://github.com/bitnami/charts/tree/master/bitnami/mariadb
-  enabled: false
+  enabled: true
   auth:
     rootPassword: "changeit"
     username: "erpnext"
