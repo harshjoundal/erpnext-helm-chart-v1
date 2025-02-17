@@ -4,7 +4,7 @@
 # fullnameOverride: "erpnext"  # this will be used as a prefix for the resource name 
 
 image:
-  repository:  harshjoundal7/frappehrms
+  repository:  harshjoundal7/helpdesk
   tag: amd
   pullPolicy: IfNotPresent
 
@@ -21,9 +21,7 @@ sitesConfig:
     # while site migration 
     installApps:
       - erpnext
-      - crm
-      - hrms
-      - raven
+      - helpdesk
     uninstallApps: [] #These apps will be uninstalled when uninstallApps job runs
     backup: # If enabled site will be backed up while backup job runs
       enabled: false
